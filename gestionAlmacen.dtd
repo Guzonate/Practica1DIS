@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!ELEMENT gestionAlmacen (producto,clientes,pedidos)>
+
+<!ATTLIST gestionAlmacen idioma CDATA #REQUIRED>
+
+<!ELEMENT producto (codigo,nombre,descripcion,stock,localizacion,estado)+>
+<!ELEMENT codigo (#PCDATA)>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT descripcion (#PCDATA)>
+<!ELEMENT stock (#PCDATA)>
+<!ELEMENT localizacion (pasillo, estanteria, estante)>
+<!ELEMENT pasillo (#PCDATA)>
+<!ELEMENT estanteria (#PCDATA)>
+<!ELEMENT estante (#PCDATA)>
+<!ELEMENT estado (#PCDATA)>
+
+<!ELEMENT clientes (nombre,apellidos,email,telefono,direccion)+>
+<!ELEMENT nombre (#PCDATA)>
+<!ELEMENT apellidos (#PCDATA)>
+<!ELEMENT email (#PCDATA)>
+<!ELEMENT telefono (#PCDATA)>
+<!ELEMENT direccion (calle,numero,cp,poblacion,pais)>
+<!ELEMENT calle (#PCDATA)>
+<!ELEMENT numero (#PCDATA)>
+<!ELEMENT cp (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+
+<!ELEMENT pedidos (productos,cantidad,direccion,destinatario,fecha)+>
+<!ELEMENT productos (#PCDATA)+>
+<!ELEMENT cantidad (#PCDATA)>
+<!ELEMENT direccion (calle,numero,cp,poblacion,pais)>
+<!ELEMENT calle (#PCDATA)>
+<!ELEMENT numero (#PCDATA)>
+<!ELEMENT cp (#PCDATA)>
+<!ELEMENT poblacion (#PCDATA)>
+<!ELEMENT pais (#PCDATA)>
+<!ELEMENT destinatario (#PCDATA)>
+<!ELEMENT fecha (#PCDATA)>
