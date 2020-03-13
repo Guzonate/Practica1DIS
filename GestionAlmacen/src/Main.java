@@ -11,6 +11,15 @@ public class Main {
 		
 	}
 	
+	public static void generarMenu() {
+		System.out.println("---------------");
+		System.out.println("Elija una opcion:");
+		System.out.println("1.- Introducir producto");
+		System.out.println("2.- Introducir datos de cliente.");
+		System.out.println("3.- Introducir datos de pedido");
+		System.out.println("4.- Salir");
+	}
+	
 	public static Clientes subMenuCliente() throws IOException {
         java.io.BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 
