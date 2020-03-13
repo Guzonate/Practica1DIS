@@ -7,10 +7,65 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
 
+		int menu = -1;
+		java.io.BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+			
 		
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+		ArrayList<Clientes> clientes = new ArrayList<Clientes>();
+		ArrayList<Pedidos> pedidos = new ArrayList<Pedidos>();
+		
+		while(menu != 4) {
+			generarMenu();
+			menu = Integer.parseInt(in.readLine());
+			switch (menu) {
+			case 1:
+				Producto p = subMenuProducto();
+				productos.add(p);
+				break;
+			case 2:
+				Clientes c = subMenuCliente();
+				clientes.add(c);
+				break;
+			case 3:
+				Pedidos ped = subMenuPedidos();
+				pedidos.add(ped);
+				break;
+			case 4:
+				break;
+			default:
+				System.out.println("Por favor, elija una opcion valida.");
+			}
+		}
+		
+		String header = "<?xml version=\"1.0\" encoding=\"UTF-8\">\n";
+		String root = "<almacen>\n";
+		String xml = "";
+		xml += header + root;
+		for(Producto p: productos) {
+			xml += "\t<productos>\n";
+			xml += p;
+			xml += "\t</productos>\n";
+		}
+		for(Clientes c: clientes) {
+			xml += "\t<clientes>\n";
+			xml += c;
+			xml += "\t</clientes>\n";
+		}
+		for(Pedidos ped: pedidos) {
+			xml += "\t<pedidos>\n";
+			xml += ped;
+			xml += "\t</pedidos>\n"
+					+ "";
+		}
+		String close_root = "\n</almacen>";
+			
+		xml += close_root;
+		
+		writeToFile(xml, "../xmlAlmacen.xml");
 		
 	}
 	
