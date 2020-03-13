@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -99,7 +102,7 @@ public class Main {
         System.out.println("---Fin de localización---");
         System.out.println("Introduce si el producto está en almacen (y/n):");
         estado_aux = in.readLine();
-        if (estado_aux == "y"  estado_aux == "yes"  estado_aux == "si") {
+        if (estado_aux == "y" || estado_aux == "yes" || estado_aux == "si") {
             estado = true;
         }else if(estado_aux == "n" || estado_aux== "no"){
             estado = false;
