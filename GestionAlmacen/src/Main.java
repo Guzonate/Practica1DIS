@@ -1,6 +1,9 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -99,7 +102,7 @@ public class Main {
         System.out.println("---Fin de localización---");
         System.out.println("Introduce si el producto está en almacen (y/n):");
         estado_aux = in.readLine();
-        if (estado_aux == "y"  estado_aux == "yes"  estado_aux == "si") {
+        if (estado_aux == "y" || estado_aux == "yes" || estado_aux == "si") {
             estado = true;
         }else if(estado_aux == "n" || estado_aux== "no"){
             estado = false;
@@ -110,5 +113,73 @@ public class Main {
                 estanteria, estante, estado);
         return p;
     }
+	
+	public static Pedidos subMenuPedidos() throws IOException {
+		java.io.BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		
+		//Inicializacion datos pedido
+		String producto = null;
+		ArrayList<String> productos = new ArrayList<String>();
+		String calle = null;
+		int numero = 0;
+		int cp = 0;
+		String poblacion = null;
+		String pais = null;
+		String destinatario = null;
+		String fecha = null;
+		
+		
+		System.out.println("Introduce datos del pedido:");
+		//Introducción de datos del pedido por el usuario
+		System.out.println("Introduce productos (presionar 0 para finalizar introduccion de productos):");
+		producto = in.readLine();
+		do{
+			if(!producto.contentEquals("0")) {
+				productos.add(producto);
+				producto = in.readLine();
+			}
+		}while(!producto.contentEquals("0"));
+		System.out.println("Productos introducidos.");
+		System.out.println("Hay un total de " + (productos.size()) + " productos.");
+		System.out.println("Introduce direccion de entrega:");
+		System.out.println("Calle:");
+		calle = in.readLine();
+		System.out.println("Número:");
+		numero = Integer.parseInt(in.readLine());;
+		System.out.println("Código Postal:");
+		cp = Integer.parseInt(in.readLine());;
+		System.out.println("Poblacion:");
+		poblacion = in.readLine();
+		System.out.println("Pais:");
+		pais = in.readLine();
+		System.out.println("---FIN de direccion de entrega---");
+		System.out.println("Introduce nombre del destinatario:");
+		destinatario = in.readLine();
+		System.out.println("Introduce de fecha estimada de entrega:");
+		System.out.println("Introduce día previsto (dd):");
+		fecha += in.readLine();
+		System.out.println("Introduce mes previsto (MM):");
+		fecha += in.readLine();
+		System.out.println("Introduce año previsto (yyyy):");
+		fecha += in.readLine();
+		System.out.println("---FIN DE PEDIDO---");
+		
+		Pedidos p = new Pedidos(productos, productos.size(), calle, numero, cp,
+				poblacion, pais, destinatario,fecha);
+		
+		return p;
+	}
+	
+	public static void writeToFile(String xml, String fileName) throws IOException {
+	    BufferedWriter writer = new BufferedWriter(new FileWriter(fileName));
+	    try {
+			writer.write(xml);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			writer.close();
+		}
+	}
 
 }
